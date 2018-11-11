@@ -46,7 +46,7 @@ RCT_EXPORT_METHOD(initWithAuth:(NSString*)username password:(NSString*)password 
         //register the server with CBL_URLProtocol
         [manager internalURL];
 
-        int suggestedPort = 5984;
+        int suggestedPort = 5986;
 
         listener = [self createListener:suggestedPort withUsername:username withPassword:password withCBLManager: manager];
 
@@ -66,7 +66,7 @@ RCT_EXPORT_METHOD(initWithAuth:(NSString*)username password:(NSString*)password 
 {
 
     CBLListener* listener = [[CBLListener alloc] initWithManager:cblManager port:port];
-    [listener setPasswords:@{username: password}];
+    // [listener setPasswords:@{username: password}];
 
     NSLog(@"Trying port %d", port);
 
