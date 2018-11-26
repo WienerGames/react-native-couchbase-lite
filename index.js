@@ -14,7 +14,11 @@ Couchbase.init(url => {
   new Swagger({spec: spec, usePromise: true})
     .then(client => {
       var encodedCredentials = "Basic " + base64.encode(url.split("//")[1].split('@')[0]);
-      client.clientAuthorizations.add("auth", new Swagger.ApiKeyAuthorization('Authorization', encodedCredentials, 'header'));
+
+      // TODO client.clientAuthorizations.add("auth", new Swagger.ApiKeyAuthorization('Authorization', encodedCredentials, 'header'));
+      // we don't use the auth at the moment but we should fix it:
+      // https://github.com/swagger-api/swagger-js/blob/master/docs/MIGRATION_2_X.md
+
       manager = client;
       if (typeof callback == 'function') {
         callback(manager);
